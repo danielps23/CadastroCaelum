@@ -2,12 +2,18 @@
 <resources>
 
     <string name="hello">Hello World, ListaAlunosActivity!</string>
-    <string name="app_name">CadastroCaelum</string>
+    <string name="app_name">Agenda</string>
     <string name="name">Nome:</string>
     <string name="phone">Telefone:</string>
     <string name="address">Endereço:</string>
     <string name="site">Site:</string>
     <string name="imageDesc">Imagem do botão</string>
     <string name="insert">Inserir</string>
+    <string name="sync">Sincronizar</string>
+    <string name="map">Mapa</string>
+    <string name="newItem">Novo</string>
+    <string name="moreOptions">Mais opções</string>
+    <string name="receive">Baixar provas</string>
+    <string name="preferences">Preferências</string>
 
 </resources>

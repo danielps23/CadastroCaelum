@@ -2,6 +2,8 @@ package br.com.dps;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -40,5 +42,24 @@ public class ListaAlunosActivity extends Activity {
 
 			
 		});
+        
+        
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	getMenuInflater().inflate(R.menu.menu_principal, menu);
+    	return super.onCreateOptionsMenu(menu);
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	switch (item.getItemId()) {
+		case R.id.novo:
+			Toast.makeText(ListaAlunosActivity.this, "Voce clicou no novoAluno", Toast.LENGTH_LONG).show();
+			return false;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
     }
 }
