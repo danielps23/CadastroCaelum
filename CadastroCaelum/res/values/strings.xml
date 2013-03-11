@@ -3,5 +3,11 @@
 
     <string name="hello">Hello World, ListaAlunosActivity!</string>
     <string name="app_name">CadastroCaelum</string>
+    <string name="name">Nome:</string>
+    <string name="phone">Telefone:</string>
+    <string name="address">Endereço:</string>
+    <string name="site">Site:</string>
+    <string name="imageDesc">Imagem do botão</string>
+    <string name="insert">Inserir</string>
 
 </resources>
