@@ -1,6 +1,7 @@
 package br.com.dps;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,7 +57,9 @@ public class ListaAlunosActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
     	switch (item.getItemId()) {
 		case R.id.novo:
-			Toast.makeText(ListaAlunosActivity.this, "Voce clicou no novoAluno", Toast.LENGTH_LONG).show();
+//			Toast.makeText(ListaAlunosActivity.this, "Voce clicou no novoAluno", Toast.LENGTH_LONG).show();
+			Intent intent = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
+			startActivity(intent);
 			return false;
 		default:
 			return super.onOptionsItemSelected(item);
