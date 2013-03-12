@@ -27,6 +27,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:ems="10"
+	        android:hint="@string/typeName"
 	        android:inputType="text" >
 	
 	        <requestFocus />
@@ -43,6 +44,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:ems="10"
+	        android:hint="@string/typePhone"
 	        android:inputType="text" />
 	
 	    <TextView
@@ -56,6 +58,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:ems="10"
+	        android:hint="@string/typeAddress"
 	        android:inputType="text" />
 	    
 	    <TextView
@@ -69,6 +72,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:ems="10"
+	        android:hint="@string/typeSite"
 	        android:inputType="text" />
 	    
 	    <SeekBar android:id="@+id/nota"

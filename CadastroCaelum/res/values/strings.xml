@@ -15,5 +15,9 @@
     <string name="moreOptions">Mais opções</string>
     <string name="receive">Baixar provas</string>
     <string name="preferences">Preferências</string>
+    <string name="typeName">Digite o seu nome aqui&#8230;</string>
+    <string name="typePhone">Digite o seu telefone aqui&#8230;</string>
+    <string name="typeAddress">Digite o seu endereço aqui&#8230;</string>
+    <string name="typeSite">Digite o seu site aqui&#8230;</string>
 
 </resources>
