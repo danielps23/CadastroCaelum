@@ -1,5 +1,7 @@
 package br.com.dps;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import android.app.Activity;
@@ -126,12 +128,12 @@ public class ListaAlunosActivity extends Activity {
 	private void carregaLista() {
         AlunoDAO dao = new AlunoDAO();
         alunos = dao.getLista();
-//        Collections.sort(alunos, new Comparator<Aluno>() {
-//
-//			public int compare(Aluno a1, Aluno a2) {
-//				return a1.getNome().compareToIgnoreCase(a2.getNome());
-//			}
-//		});
+        Collections.sort(alunos, new Comparator<Aluno>() {
+
+			public int compare(Aluno a1, Aluno a2) {
+				return a1.getNome().compareToIgnoreCase(a2.getNome());
+			}
+		});
         
         ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunos);
         listaAlunos.setAdapter(adapter);

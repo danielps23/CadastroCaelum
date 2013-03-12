@@ -37,35 +37,22 @@ public class AlunoDAO {
 		List<Aluno> alunos = new ArrayList<Aluno>();
 
 		Cursor c = null;
-		
+
 		try {
 			c = ConexaoHelper.getInstance().getReadableDatabase()
 					.query(TABELA, COLUNAS, null, null, null, null, null);
-			
+
 			while (c.moveToNext()) {
-				Aluno aluno = new Aluno();
-
-				aluno.setId(c.getLong(0));
-				aluno.setNome(c.getString(1));
-				aluno.setTelefone(c.getString(2));
-				aluno.setEndereco(c.getString(3));
-				aluno.setSite(c.getString(4));
-				aluno.setNota(c.getDouble(5));
-				aluno.setFoto(c.getString(6));
-
+				Aluno aluno = toAluno(c);
 				alunos.add(aluno);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if ( c != null ) {
+			if (c != null) {
 				c.close();
 			}
 		}
-
-		
-
-		
 
 		return alunos;
 	}
@@ -74,6 +61,44 @@ public class AlunoDAO {
 		String[] args = { aluno.getId().toString() };
 		ConexaoHelper.getInstance().getWritableDatabase()
 				.delete(TABELA, "id=?", args);
+	}
+
+	public Aluno getAlunoPorId(Long id) {
+		
+		Aluno aluno = null;
+		String[] args = { id.toString() };
+		Cursor c = null;
+
+		try {
+			c = ConexaoHelper.getInstance().getReadableDatabase()
+					.query(TABELA, COLUNAS, "id=?", args, null, null, null);
+
+			c.moveToFirst();
+			aluno = toAluno(c);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (c != null) {
+				c.close();
+			}
+		}
+		
+		return aluno;
+	}
+
+	private Aluno toAluno(Cursor c) {
+		Aluno aluno = new Aluno();
+
+		aluno.setId(c.getLong(0));
+		aluno.setNome(c.getString(1));
+		aluno.setTelefone(c.getString(2));
+		aluno.setEndereco(c.getString(3));
+		aluno.setSite(c.getString(4));
+		aluno.setNota(c.getDouble(5));
+		aluno.setFoto(c.getString(6));
+
+		return aluno;
 	}
 
 }
