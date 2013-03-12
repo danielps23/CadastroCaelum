@@ -1,5 +1,7 @@
 package br.com.dps;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,24 +14,29 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import br.com.dps.dao.AlunoDAO;
+import br.com.dps.modelo.Aluno;
 
 public class ListaAlunosActivity extends Activity {
+	
+	private List<Aluno> alunos;
+	
+	private ListView listaAlunos;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        final String []alunos = {"Daniel", "Anderson", "Felipe", "Guilherme"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alunos );
-        ListView listaAlunos = (ListView) findViewById(R.id.lista_alunos);
-        listaAlunos.setAdapter(adapter);
+        listaAlunos = (ListView) findViewById(R.id.lista_alunos);
+        carregaLista();
         
         listaAlunos.setOnItemClickListener( new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> adapter, View view, int posicao,
 					long id) {
-				Toast.makeText(ListaAlunosActivity.this, "Posição selecionada: " + posicao + ", o aluno é " + alunos[posicao], Toast.LENGTH_SHORT).show();				
+				Toast.makeText(ListaAlunosActivity.this, "Posição selecionada: " + posicao + ", o aluno é " + alunos.get(posicao).getNome(), Toast.LENGTH_SHORT).show();				
 			}
 		});
         
@@ -37,7 +44,7 @@ public class ListaAlunosActivity extends Activity {
 
 			public boolean onItemLongClick(AdapterView<?> adapter, View view,
 					int posicao, long id) {
-				Toast.makeText(ListaAlunosActivity.this, "Posição selecionada click longo: " + posicao + ", o aluno é " + alunos[posicao], Toast.LENGTH_LONG).show();
+				Toast.makeText(ListaAlunosActivity.this, "Posição selecionada click longo: " + posicao + ", o aluno é " + alunos.get(posicao).getNome(), Toast.LENGTH_LONG).show();
 				return false;
 			}
 
@@ -65,4 +72,19 @@ public class ListaAlunosActivity extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
     }
+    
+    @Override
+    protected void onResume() {
+    	super.onResume();
+    	carregaLista();
+    }
+
+	private void carregaLista() {
+        AlunoDAO dao = new AlunoDAO(this);
+        alunos = dao.getLista();
+        dao.close();
+        
+        ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunos);
+        listaAlunos.setAdapter(adapter);
+	}
 }
