@@ -20,7 +20,7 @@ public class FormularioActivity extends Activity {
         
         helper = new FormularioHelper( this );
         
-        dao = new AlunoDAO(FormularioActivity.this);
+        dao = new AlunoDAO();
         
         Button botao = (Button) findViewById(R.id.botao);
         botao.setOnClickListener( new View.OnClickListener() {
@@ -34,11 +34,4 @@ public class FormularioActivity extends Activity {
         });
     }
 	
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		if ( dao != null ) {
-			dao.close();
-		}
-	}
 }
