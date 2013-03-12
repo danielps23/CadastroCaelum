@@ -1,13 +1,17 @@
 package br.com.dps.modelo;
 
-public class Aluno {
+import java.io.Serializable;
 
+public class Aluno implements Serializable {
+
+	private static final long serialVersionUID = -4254229571553171307L;
+	
 	private Long id;
 	private String nome;
 	private String telefone;
 	private String endereco;
 	private String site;
-	private double nota;
+	private Double nota;
 	private String foto;
 
 	public Long getId() {
@@ -50,11 +54,11 @@ public class Aluno {
 		this.site = site;
 	}
 
-	public double getNota() {
+	public Double getNota() {
 		return nota;
 	}
 
-	public void setNota(double nota) {
+	public void setNota(Double nota) {
 		this.nota = nota;
 	}
 

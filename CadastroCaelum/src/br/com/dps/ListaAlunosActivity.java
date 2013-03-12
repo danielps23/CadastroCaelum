@@ -24,6 +24,7 @@ import android.widget.Toast;
 import br.com.dps.dao.AlunoDAO;
 import br.com.dps.helper.ConexaoHelper;
 import br.com.dps.modelo.Aluno;
+import br.com.dps.util.Extras;
 
 public class ListaAlunosActivity extends Activity {
 	
@@ -47,7 +48,10 @@ public class ListaAlunosActivity extends Activity {
 
 			public void onItemClick(AdapterView<?> adapter, View view, int posicao,
 					long id) {
-				Toast.makeText(ListaAlunosActivity.this, "Posição selecionada: " + posicao + ", o aluno é " + alunos.get(posicao).getNome(), Toast.LENGTH_SHORT).show();				
+				Intent edicao = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
+				Aluno alunoSelecionado = (Aluno) listaAlunos.getItemAtPosition(posicao);
+				edicao.putExtra(Extras.ALUNO_SELECIONADO, alunoSelecionado);
+				startActivity(edicao);
 			}
 		});
         

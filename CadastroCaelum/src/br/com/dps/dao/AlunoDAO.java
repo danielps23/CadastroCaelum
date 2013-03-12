@@ -86,6 +86,12 @@ public class AlunoDAO {
 		
 		return aluno;
 	}
+	
+	public void alterar(Aluno aluno) {
+		ContentValues values = toValues(aluno);
+		String[] args = { aluno.getId().toString() };
+		ConexaoHelper.getInstance().getWritableDatabase().update(TABELA, values, "id=?", args);
+	}
 
 	private Aluno toAluno(Cursor c) {
 		Aluno aluno = new Aluno();
@@ -99,6 +105,14 @@ public class AlunoDAO {
 		aluno.setFoto(c.getString(6));
 
 		return aluno;
+	}
+
+	public void insereAltera(Aluno aluno) {
+		if ( aluno.getId() == null ) {
+			insere(aluno);
+		} else {
+			alterar(aluno);
+		}
 	}
 
 }
