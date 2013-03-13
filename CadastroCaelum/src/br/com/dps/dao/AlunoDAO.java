@@ -114,5 +114,12 @@ public class AlunoDAO {
 			alterar(aluno);
 		}
 	}
+	
+	public boolean isAluno(String telefone) {
+		Cursor rawQuery = ConexaoHelper.getInstance().getReadableDatabase().rawQuery("SELECT telefone from " + TABELA + " WHERE telefone = ?", new String[]{telefone});
+		int total = rawQuery.getCount();
+		
+		return total > 0;
+	}
 
 }
