@@ -24,10 +24,10 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 import br.com.dps.adapter.ListaAlunosAdapter;
-import br.com.dps.converter.AlunoConverter;
 import br.com.dps.dao.AlunoDAO;
 import br.com.dps.helper.ConexaoHelper;
 import br.com.dps.modelo.Aluno;
+import br.com.dps.task.EnviaContatosTask;
 import br.com.dps.util.Extras;
 
 public class ListaAlunosActivity extends Activity {
@@ -157,13 +157,8 @@ public class ListaAlunosActivity extends Activity {
 			startActivity(intent);
 			return false;
 		case R.id.enviar_alunos:
-			AlunoDAO dao = new AlunoDAO();
-			List<Aluno> alunos = dao.getLista();
+			new EnviaContatosTask(this).execute();
 			
-			AlunoConverter alunoConverter = new AlunoConverter();
-			String json = alunoConverter.toJSON(alunos);
-			
-			Toast.makeText(ListaAlunosActivity.this, json, Toast.LENGTH_LONG).show();
 			return false;
 		default:
 			return super.onOptionsItemSelected(item);

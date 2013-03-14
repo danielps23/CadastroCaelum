@@ -39,7 +39,7 @@ public class ListaAlunosAdapter extends BaseAdapter {
 	public View getView(int posicao, View convertView, ViewGroup parent) {
 		View view = activity.getLayoutInflater().inflate(R.layout.item, null);
 		Aluno aluno = alunos.get(posicao);
-		LinearLayout fundo = (LinearLayout) view.findViewById(R.id.fundo);
+		ViewGroup fundo = (ViewGroup) view.findViewById(R.id.fundo);
 		
 		if ( posicao % 2 == 0 ) {
 			fundo.setBackgroundColor(activity.getResources().getColor(R.color.linha_par));
@@ -61,6 +61,16 @@ public class ListaAlunosAdapter extends BaseAdapter {
 		
 		ImageView foto = (ImageView) view.findViewById(R.id.foto);
 		foto.setImageBitmap(bm);
+		
+		TextView telefone = (TextView) view.findViewById(R.id.telefone);
+		if ( telefone != null ) {
+			telefone.setText( aluno.getTelefone() );
+		}
+		
+		TextView site = (TextView) view.findViewById(R.id.site);
+		if ( site != null ) {
+			site.setText( aluno.getSite() );
+		}
 		
 		return view;
 	}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fundo"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/foto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="@color/borda_imagem"
+        android:contentDescription="@string/imageDesc"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/foto"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/telefone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingRight="5dp"
+        android:textSize="14sp"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/site"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/telefone"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/fundo"
+		android:gravity="bottom"        
+        android:paddingRight="5dp"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        android:typeface="sans" />
+
+</RelativeLayout>
