@@ -10,7 +10,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -25,6 +24,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 import br.com.dps.adapter.ListaAlunosAdapter;
+import br.com.dps.converter.AlunoConverter;
 import br.com.dps.dao.AlunoDAO;
 import br.com.dps.helper.ConexaoHelper;
 import br.com.dps.modelo.Aluno;
@@ -155,6 +155,15 @@ public class ListaAlunosActivity extends Activity {
 			Intent intent = new Intent(ListaAlunosActivity.this,
 					FormularioActivity.class);
 			startActivity(intent);
+			return false;
+		case R.id.enviar_alunos:
+			AlunoDAO dao = new AlunoDAO();
+			List<Aluno> alunos = dao.getLista();
+			
+			AlunoConverter alunoConverter = new AlunoConverter();
+			String json = alunoConverter.toJSON(alunos);
+			
+			Toast.makeText(ListaAlunosActivity.this, json, Toast.LENGTH_LONG).show();
 			return false;
 		default:
 			return super.onOptionsItemSelected(item);
