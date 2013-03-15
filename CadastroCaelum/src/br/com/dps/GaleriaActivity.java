@@ -7,7 +7,6 @@ import java.util.List;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.widget.TextView;
 import br.com.dps.adapter.GaleriaAlunosAdapter;
 import br.com.dps.dao.AlunoDAO;
 import br.com.dps.modelo.Aluno;

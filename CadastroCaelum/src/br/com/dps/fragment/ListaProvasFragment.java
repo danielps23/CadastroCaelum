@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 import br.com.dps.ProvasActivity;
 import br.com.dps.R;
 import br.com.dps.modelo.Prova;
