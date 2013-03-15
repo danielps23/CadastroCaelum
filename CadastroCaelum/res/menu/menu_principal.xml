@@ -26,6 +26,11 @@
                 android:showAsAction="always"
                 android:title="@string/receive"/>
             <item
+                android:id="@+id/galeria_view"
+                android:icon="@drawable/icon"
+                android:showAsAction="always"
+                android:title="@string/gallery"/>
+            <item
                 android:id="@+id/preferencias"
                 android:icon="@drawable/ic_preferencias"
                 android:showAsAction="always"

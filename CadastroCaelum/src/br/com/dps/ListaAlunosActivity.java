@@ -165,6 +165,16 @@ public class ListaAlunosActivity extends Activity {
 			startActivity(provas);
 			
 			return false;
+		case R.id.mapa:
+			Intent mapa = new Intent(this, MostraAlunosProximosActivity.class);
+			startActivity(mapa);
+			
+			return false;
+		case R.id.galeria_view:
+			Intent galeria = new Intent(this, GaleriaActivity.class);
+			startActivity(galeria);
+			
+			return false;
 		default:
 			return super.onOptionsItemSelected(item);
 		}

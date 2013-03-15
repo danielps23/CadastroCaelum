@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import br.com.dps.ProvasActivity;
 import br.com.dps.R;
 import br.com.dps.modelo.Prova;
 
@@ -51,10 +52,10 @@ public class ListaProvasFragment extends Fragment {
 						Prova provaSelecionada = (Prova) adapter
 								.getItemAtPosition(posicao);
 
-						// Toast.makeText(getActivity(), "Prova selecionada: " +
-						// provaSelecionada, Toast.LENGTH_LONG).show();
+						ProvasActivity calendarioProvas = (ProvasActivity) getActivity();
+						calendarioProvas.selecionaProva(provaSelecionada);
 
-						LayoutInflater inflater = ListaProvasFragment.this
+/*						LayoutInflater inflater = ListaProvasFragment.this
 								.getActivity().getLayoutInflater();
 						View toastView = inflater
 								.inflate(
@@ -70,7 +71,7 @@ public class ListaProvasFragment extends Fragment {
 
 						Toast toast = new Toast(getActivity());
 						toast.setView(toastView);
-						toast.show();
+						toast.show();*/
 					}
 
 				});
