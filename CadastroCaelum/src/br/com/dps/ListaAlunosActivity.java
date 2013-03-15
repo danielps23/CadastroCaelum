@@ -160,6 +160,11 @@ public class ListaAlunosActivity extends Activity {
 			new EnviaContatosTask(this).execute();
 			
 			return false;
+		case R.id.receber_provas:
+			Intent provas = new Intent(this, ProvasActivity.class);
+			startActivity(provas);
+			
+			return false;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
