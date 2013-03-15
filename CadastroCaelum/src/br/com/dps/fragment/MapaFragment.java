@@ -1,6 +1,6 @@
 package br.com.dps.fragment;
 
-import br.com.dps.map.Localizador;
+import br.com.dps.map.AtualizadorDeLocalizacao;
 import br.com.dps.task.ColocaAlunosNoMapaTask;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -10,13 +10,13 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class MapaFragment extends SupportMapFragment {
 	
+	private AtualizadorDeLocalizacao updater;
+	
 	@Override
 	public void onResume() {
 		super.onResume();
 		
-		Localizador localizador = new Localizador(getActivity());
-		LatLng local = localizador.getCoordenada("Rua Vergueiro 3185 Vila Mariana");
-		centralizaNo(local);
+		updater = new AtualizadorDeLocalizacao(getActivity(), this);
 		
 		new ColocaAlunosNoMapaTask(this).execute(this);
 	}
@@ -25,6 +25,11 @@ public class MapaFragment extends SupportMapFragment {
 		GoogleMap map = this.getMap();
 		map.moveCamera(CameraUpdateFactory.newLatLngZoom(local, 17));
 		
+	}
+	
+	@Override
+	public void onDestroy() {
+		updater.cancela();
 	}
 
 }
