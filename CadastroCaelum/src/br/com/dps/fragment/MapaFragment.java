@@ -29,6 +29,7 @@ public class MapaFragment extends SupportMapFragment {
 	
 	@Override
 	public void onDestroy() {
+		super.onDestroy();
 		updater.cancela();
 	}
 
